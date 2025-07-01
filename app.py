@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
 #from sentence_transformers import SentenceTransformer 
 
 app = Flask(__name__)
@@ -49,10 +50,10 @@ class Group(db.Model):
 from sentence_transformers import SentenceTransformer 
 import faiss
 import numpy as np
-from huggingface_hub import snapshot_download
+
 from sentence_transformers import SentenceTransformer
 
-model_path = snapshot_download("sentence-transformers/all-MiniLM-L6-v2", cache_dir="/data")
+model_path = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", cache_dir="/data")
 model = SentenceTransformer(model_path)
 
 
@@ -160,5 +161,6 @@ if __name__ == "__main__":
         #db.session.add_all([group1,group2,group3,group4])
         #db.session.commit()
         #db.create_all()
-        app.run(host='0.0.0.0', port=7860)
+        port = int(os.environ.get("PORT", 10000))  # Use PORT from Render
+        app.run(host='0.0.0.0', port=port)
 
