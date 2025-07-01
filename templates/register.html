@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"], input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    
+    {% with messages = get_flashed_messages() %}
+      {% for msg in messages %}
+        <p class="error">{{ msg }}</p>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                Username must be at least 3 characters (letters, numbers, and underscores only)
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                Password must be at least 8 characters with one uppercase letter, one number, and one special character
+            </small>
+        </div>
+
+
+        <div class="form-group">
+            <label for="bio">Bio:</label>
+            <input type="text" name="bio" id="bio" required>
+            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                bio must be at least 3 characters 
+            </small>
+        </div>
+
+        <div class="form-group">
+          
+          
+            <label for="interest">interest:</label>
+            <input type="text" name="interest" id="interest" required>
+            <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                interest must be at least csv<br>
+                   choose from options like dsa,ai,ml,java,c++,python,  
+            </small>
+        </div>
+
+        
+<!-- Write your comments here --
+        <div class="form-group">
+            <label for="vehicle_type">Vehicle Type:</label>
+            <select name="vehicle_type" id="vehicle_type" required>
+                <option value="">Select Vehicle Type</option>
+                <option value="car">Car</option>
+                <option value="motorcycle">Motorcycle</option>
+                <option value="bicycle">Bicycle</option>
+                <option value="public_transport">Public Transport</option>
+                <option value="walking">Walking</option>
+                <option value="other">Other</option>
+            </select>
+        </div>>>-->
+
+    
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="login-link">
+        <p><a href="{{ url_for('login') }}">Already have an account? Login here</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+flask
+flask_sqlalchemy
+sentence-transformers
+faiss-cpu
+pymysql
+werkzeug
+gunicorn
+huggingface_hub
+transformers
