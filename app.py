@@ -53,7 +53,7 @@ import numpy as np
 
 from sentence_transformers import SentenceTransformer
 
-model_path = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", cache_dir="/data")
+model_path = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 model = SentenceTransformer(model_path)
 
 
