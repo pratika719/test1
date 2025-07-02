@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-import os
+
 #from sentence_transformers import SentenceTransformer 
 
 app = Flask(__name__)
@@ -53,8 +53,8 @@ import numpy as np
 
 from sentence_transformers import SentenceTransformer
 
-model_path = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-model = SentenceTransformer(model_path)
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+
 
 
 def indexing(user):
@@ -161,6 +161,6 @@ if __name__ == "__main__":
         #db.session.add_all([group1,group2,group3,group4])
         #db.session.commit()
         #db.create_all()
-        port = int(os.environ.get("PORT", 10000))  # Use PORT from Render
-        app.run(host='0.0.0.0', port=port)
+ # Use PORT from Render
+        app.run(debug=True)
 
